@@ -67,7 +67,7 @@ def approx(initial_location: List[np.ndarray], flow: np.ndarray,
             },
             {
                 'name': 'mink_sum(mat_exp(flow) * I, bloat)',
-                'vertices': flowpipe
+                'vertices': bloated_flowpipe
             },
             {
                 'name': 'Omega_1: convHull(mink_sum(mat_exp(flow) * I, bloat), I)',

@@ -25,6 +25,8 @@ The above code will produce the following plot:
 
 ![Flowpipe plot](./example_flowp.png)
 
+One can optionally pass the argument `step_size`, which changes the standard step size from `1` to any desired value.
+
 # Setup
 
 If you have problems installing dependencies/setting this up to work, you can use `poetry` dependency management. Just run:
