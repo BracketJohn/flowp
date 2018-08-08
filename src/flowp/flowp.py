@@ -1,6 +1,6 @@
 """Approximate flowpipes of an LHA for n steps."""
 from itertools import product
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional
 
 import numpy as np
 import plotly.graph_objs as go
@@ -16,7 +16,7 @@ def approx(initial_location: List[np.ndarray], flow: np.ndarray,
     Parameters
     ----------
     initial_location: List[np.ndarray]
-        Initial starting location, expecting this to be a 2D V-representation.
+        Initial starting valuation, expecting this to be a 2D V-representation.
 
     flow: np.ndarray
         Flow in current location, used to calculate flow pipe.
@@ -62,18 +62,19 @@ def approx(initial_location: List[np.ndarray], flow: np.ndarray,
 
     polytopes = [
             {
-                'name': 'Initial Location',
+                'name': 'Initial Valuation I',
                 'vertices': initial_location
             },
             {
-                'name': 'Flowpipe',
+                'name': 'mink_sum(mat_exp(flow) * I, bloat)',
                 'vertices': flowpipe
             },
             {
-                'name': 'convHull(bloated_flowpipe, initial_locations)',
+                'name': 'Omega_1: convHull(mink_sum(mat_exp(flow) * I, bloat), I)',
                 'vertices': bloated_flowpipe_with_init
             },
         ]
+
     if bloating:
         polytopes.append({
             'name': 'Bloating',

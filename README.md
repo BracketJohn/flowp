@@ -4,6 +4,8 @@ Afternoon project that approximates and plots flow pipes for linear hybrid autom
 
 Nice to play around and explore basic flowpipe construction.
 
+Please have a look at [this lecture](https://ths.rwth-aachen.de/wp-content/uploads/sites/4/teaching/vorlesung_hybride_systeme/ss2015/10b_LHA2_reachability.pdf) to get an idea of what's going on.
+
 # Usage
 
 `flowp` can be used like:
@@ -30,7 +32,9 @@ If you have problems installing dependencies/setting this up to work, you can us
 ```
 > poetry install
 > cd src
-> poetry run python3
+> poetry run ipython
 ```
 
 This will use the provided lock file to install all dependencies and then run a virtual env python environment, in which you can execute the above code.
+
+Subsitute `ipython` by your prefered python environment or execute code using `flowp` or whatever.
