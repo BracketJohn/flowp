@@ -51,7 +51,6 @@ def approx(initial_location: List[np.ndarray], flow: np.ndarray,
 
     """
     matrix_exp = scipy.linalg.expm(step_size * flow)
-
     flowpipe = [matrix_exp @ v for v in initial_location]
     if bloating:
         bloated_flowpipe = [v1 + v2 for v1, v2 in product(flowpipe, bloating)]
@@ -66,8 +65,8 @@ def approx(initial_location: List[np.ndarray], flow: np.ndarray,
                 'vertices': initial_location
             },
             {
-                'name': 'mink_sum(mat_exp(flow) * I, bloat)',
-                'vertices': bloated_flowpipe
+                'name': 'mat_exp(flow) * I',
+                'vertices': flowpipe
             },
             {
                 'name': 'Omega_1: convHull(mink_sum(mat_exp(flow) * I, bloat), I)',
@@ -87,7 +86,7 @@ def approx(initial_location: List[np.ndarray], flow: np.ndarray,
                                 for vert in conv_hull.vertices]
 
     if plot:
-        plot_polytopes(polytopes)
+        return plot_polytopes(polytopes)
 
     return polytopes
 
@@ -113,7 +112,7 @@ def plot_polytopes(polytopes: List[Dict[str, Any]]) -> None:
     centers = np.empty((0, 2))
     for polytope in polytopes:
         poly = np.array(polytope['vertices'])
-        centers = np.append(centers, [poly.sum(axis=0) / poly.shape[0]], axis=0)
+        centers = np.append(centers, [poly[0] - [0, 0.1]], axis=0)
 
     labels_x = centers[:, 0]
     labels_y = centers[:, 1]
