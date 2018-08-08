@@ -1,0 +1,7 @@
+# Plots
+
+*.html
+
+# Python Stuff
+
+__pycache__
